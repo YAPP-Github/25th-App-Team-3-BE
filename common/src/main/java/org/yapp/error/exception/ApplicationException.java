@@ -1,11 +1,12 @@
 package org.yapp.error.exception;
 
+import org.yapp.error.dto.ErrorCode;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.yapp.error.dto.CommonErrorCode;
 
 @Getter
 @RequiredArgsConstructor
 public class ApplicationException extends RuntimeException {
-    private final CommonErrorCode errorCode;
+  private final ErrorCode errorCode;
 }

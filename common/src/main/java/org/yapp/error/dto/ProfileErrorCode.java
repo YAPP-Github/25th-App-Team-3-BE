@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum UserErrorCode implements ErrorCode {
-  INACTIVE_USER(HttpStatus.FORBIDDEN, "User is inactive"),
-  NOTFOUND_USER(HttpStatus.NOT_FOUND, "User not found"),
+public enum ProfileErrorCode implements ErrorCode {
+  INACTIVE_PROFILE(HttpStatus.FORBIDDEN, "Profile is inactive"),
+  NOTFOUND_PROFILE(HttpStatus.NOT_FOUND, "Profile not found"),
   ;
 
   private final HttpStatus httpStatus;
