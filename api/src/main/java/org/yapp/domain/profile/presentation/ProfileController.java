@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.yapp.domain.auth.presentation.dto.response.OauthLoginResponse;
 import org.yapp.domain.profile.Profile;
 import org.yapp.domain.profile.application.ProfileImageService;
+import org.yapp.domain.profile.application.dto.ProfileCreateDto;
 import org.yapp.domain.profile.presentation.request.ProfileUpdateRequest;
 import org.yapp.domain.profile.presentation.request.ProfileValueUpdateRequest;
 import org.yapp.domain.profile.presentation.response.ProfileResponse;
@@ -31,6 +33,16 @@ public class ProfileController {
   private final ProfileService profileService;
   private final UserService userService;
   private final ProfileImageService profileImageService;
+
+  @PutMapping("/init")
+  @Operation(summary = "프로필 초기 등록", description = "현재 로그인된 사용자의 프로필을 초기 등록합니다.", tags = {"Profile"})
+  public ResponseEntity<CommonResponse<OauthLoginResponse>> initializeProfile(@AuthenticationPrincipal Long userId,
+      @RequestBody @Valid ProfileCreateDto request) {
+    //TODO : ProfileCreateDto를 바꿔야한다. 차라리 ProfileUpdateDto랑 합치는게 좋을듯
+    Profile profile = profileService.create(request);
+    OauthLoginResponse oauthLoginResponse = userService.completeProfileInitialize(profile);
+    return ResponseEntity.status(HttpStatus.OK).body(CommonResponse.createSuccess(oauthLoginResponse));
+  }
 
   @GetMapping
   @Operation(summary = "프로필 조회", description = "현재 로그인된 사용자의 프로필을 조회합니다.", tags = {"Profile"})

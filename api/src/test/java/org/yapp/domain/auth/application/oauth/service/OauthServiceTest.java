@@ -57,7 +57,6 @@ class OauthServiceTest {
     OauthLoginResponse response = oauthService.login(request);
 
     // Then
-    assertThat(response.isRegistered()).isTrue();
     assertThat(response.getAccessToken()).isEqualTo("access_token");
     assertThat(response.getRefreshToken()).isEqualTo("refresh_token");
   }
@@ -98,7 +97,6 @@ class OauthServiceTest {
     OauthLoginResponse response = oauthService.login(request);
 
     // Then
-    assertThat(response.isRegistered()).isFalse();
     assertThat(response.getAccessToken()).isEqualTo("access_token");
     assertThat(response.getRefreshToken()).isEqualTo("refresh_token");
   }

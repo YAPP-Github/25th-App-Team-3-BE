@@ -14,7 +14,7 @@ import org.yapp.util.CommonResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 @RequiredArgsConstructor
 public class LoginController {
   private final OauthService oauthService;

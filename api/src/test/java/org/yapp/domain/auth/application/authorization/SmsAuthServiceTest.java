@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.yapp.global.application.RedisService;
 import org.yapp.global.application.SmsSenderService;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,9 +25,12 @@ class SmsAuthServiceTest {
   @Mock
   private SmsSenderService smsSenderService;
 
+  @Mock
+  private RedisService redisService;
+
   @BeforeEach
   void setUp() {
-    smsAuthService = new SmsAuthService(authCodeGenerator, smsSenderService);
+    smsAuthService = new SmsAuthService(authCodeGenerator, smsSenderService, redisService);
   }
 
   @Test

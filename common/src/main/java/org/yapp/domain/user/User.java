@@ -30,6 +30,9 @@ public class User {
   @Column(name = "name")
   private String name;
 
+  @Column(name = "phone")
+  private String phoneNumber;
+
   @Column(name = "role")
   private String role = "USER";
 
@@ -45,8 +48,16 @@ public class User {
     this.role = role;
   }
 
+  public void initializePhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
   public void setProfile(Profile profile) {
     this.profile = profile;
+  }
+
+  public void updateUserRole(String role) {
+    this.role = role;
   }
 }
 
