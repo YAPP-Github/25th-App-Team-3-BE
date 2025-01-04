@@ -26,3 +26,11 @@ VALUES (1, '음주', '연인과 함께 술을 마시는 것을 좋아하나요?'
 INSERT INTO profile_value (profile_value_id, profile_id, value_item_id, selected_answer)
 VALUES (1, 1, 1, 2),
        (2, 1, 2, 3);
+
+INSERT INTO term (version, title, content, required, start_date, is_active)
+VALUES
+    ('1.0', '서비스 이용약관', '서비스 이용에 대한 약관 내용입니다.', true, '2024-01-01 00:00:00', true),
+    ('1.0', '개인정보 처리방침', '개인정보 보호에 대한 약관 내용입니다.', true, '2024-01-01 00:00:00', true),
+    ('1.0', '위치 정보 이용약관', '위치 정보 활용에 대한 약관 내용입니다.', false, '2024-01-01 00:00:00', true),
+    ('1.1', '서비스 이용약관', '서비스 이용약관이 업데이트되었습니다.', true, '2024-06-01 00:00:00', true),
+    ('1.1', '광고 수신 동의', '광고 수신 동의 약관입니다.', false, '2024-06-01 00:00:00', false)
